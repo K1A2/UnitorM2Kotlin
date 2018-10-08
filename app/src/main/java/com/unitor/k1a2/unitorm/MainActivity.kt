@@ -21,11 +21,10 @@ import android.os.AsyncTask
 import com.unitor.k1a2.unitorm.file.asynctask.UnzipFile
 import com.unitor.k1a2.unitorm.file.sharedpreference.PreferenceKey
 import com.unitor.k1a2.unitorm.file.sharedpreference.SharedPreferenceIO
-import com.unitor.k1a2.unitorm.view.Recycler.SelectFileItem
 import com.unitor.k1a2.unitorm.view.Recycler.listener.RecyclerItemClickListener
 import com.unitor.k1a2.unitorm.view.dialog.DialogKey
 import com.unitor.k1a2.unitorm.view.dialog.FileExDialog
-import android.content.DialogInterface
+import com.unitor.k1a2.unitorm.file.FileKey
 import com.unitor.k1a2.unitorm.file.asynctask.DeleteFile
 
 

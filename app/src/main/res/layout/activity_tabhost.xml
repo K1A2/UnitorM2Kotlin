@@ -16,7 +16,7 @@
             android:id="@+id/tabs"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             app:tabTextColor="@color/colorTextNormal"
             android:layout_height="?attr/actionBarSize"
             app:tabGravity="fill">
@@ -29,7 +29,10 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:paddingRight="10dp"
+            android:layout_weight="0.5"
             app:layout_scrollFlags="scroll|enterAlways"
+            android:theme="@style/toolbar_style"
+            app:titleTextColor="@color/colorTextNormal"
             app:popupTheme="@style/Theme.AppCompat.Light">
 
         </android.support.v7.widget.Toolbar>

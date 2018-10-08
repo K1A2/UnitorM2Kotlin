@@ -4,10 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.ContextWrapper
 import android.os.Environment
-import java.nio.file.Files.exists
-import java.nio.file.Files.isDirectory
-import android.os.Environment.getExternalStorageDirectory
-import com.unitor.k1a2.unitorm.FileKey
 import com.unitor.k1a2.unitorm.R
 import java.io.*
 import java.util.ArrayList
@@ -96,6 +92,15 @@ class FileIO(private val context: Context) : ContextWrapper(context) {
         } else {
             return null
         }
+    }
+
+    /**인포 관련 */
+    //info내용 가져옴
+    @Throws(Exception::class)
+    fun getInfo(path: String): ArrayList<String>? {
+        var path = path
+        path += "info"
+        return getTextFile(File(path))
     }
 
     /**그밖에것들 */

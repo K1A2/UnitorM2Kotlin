@@ -9,4 +9,5 @@
     <color name="black_semi_transparent">#1a1919</color>
     <color name="title">#FF000000</color>
     <color name="sub">#c7000000</color>
+    <color name="colorEdittextHint">#90ffffff</color>
 </resources>

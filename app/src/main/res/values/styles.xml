@@ -15,4 +15,12 @@
         <item name="android:textColor">#FFFFFFFF</item>
     </style>
 
+    <style name="edittext_darkback" parent="AppTheme">
+        <item name="colorControlNormal">#ffffff</item>
+    </style>
+
+    <style name="toolbar_style" parent="edittext_darkback">
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+    </style>
+
 </resources>

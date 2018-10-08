@@ -1,13 +1,10 @@
 package com.unitor.k1a2.unitorm.file.asynctask
 
-import java.nio.file.Files.delete
-import java.nio.file.Files.isDirectory
-import java.nio.file.Files.exists
 import com.unitor.k1a2.unitorm.view.Recycler.UnipackListAdapter
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.AsyncTask
-import com.unitor.k1a2.unitorm.FileKey
+import com.unitor.k1a2.unitorm.file.FileKey
 import java.io.File
 
 
