@@ -23,6 +23,9 @@
         <activity android:name=".MainActivity"
             android:screenOrientation="sensorLandscape">
         </activity>
+        <activity android:name=".TabHostActivity"
+            android:screenOrientation="sensorLandscape">
+        </activity>
     </application>
 
 </manifest>

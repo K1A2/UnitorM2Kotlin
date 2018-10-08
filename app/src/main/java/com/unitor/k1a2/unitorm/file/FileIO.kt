@@ -9,23 +9,22 @@ import java.nio.file.Files.isDirectory
 import android.os.Environment.getExternalStorageDirectory
 import com.unitor.k1a2.unitorm.FileKey
 import com.unitor.k1a2.unitorm.R
-import java.io.File
+import java.io.*
 import java.util.ArrayList
-import java.io.FileFilter
-import java.io.BufferedReader
-import java.io.FileReader
 
 
 class FileIO(private val context: Context) : ContextWrapper(context) {
 
     private val defaultpath: String = Environment.getExternalStorageDirectory().absolutePath + "/"
 
+
+    /**유니팩 관련**/
     fun getUnipacks(): ArrayList<Array<String>?>? {
         var unipackProjectF: File = File(defaultpath + "unipackProject/")
 
         try {
-            isExists(unipackProjectF, FileKey().KEY_DIRECTORY_INT)
-            isExists(File(defaultpath + "unipackProject/.nomedia"), FileKey().KEY_FILE_INT)
+            isExists(unipackProjectF, FileKey.KEY_DIRECTORY_INT)
+            isExists(File(defaultpath + "unipackProject/.nomedia"), FileKey.KEY_FILE_INT)
         } catch (e:Exception) {
             e.printStackTrace()
             if (e.message != null) showErr(e.message!!)
@@ -47,21 +46,41 @@ class FileIO(private val context: Context) : ContextWrapper(context) {
         return unipackInfo
     }
 
+    //새 유팩생성
+    @Throws(Exception::class)
+    fun mkNewUnipack(Title: String, Producer: String, Chain: String, path: String) {
+        var path = path
+        val file = File(path)
+        isExists(file, FileKey.KEY_DIRECTORY_INT)
+
+        path += "info"
+        mkInfo(Title, Producer, Chain, path)
+    }
+
+    //인포 생성, 저장
+    @Throws(Exception::class)
+    fun mkInfo(Title: String, Producer: String, Chain: String, path: String) {
+        val file = File(path)
+        isExists(file, FileKey.KEY_FILE_INT)
+
+        val printWriter = PrintWriter(file)
+        printWriter.printf(FileKey.KEY_INFO_CONTENT, Title, Producer, Chain)
+        printWriter.close()
+    }
+
     //유니팩 인포 가져옴
     fun getUnipackInfo(unipack: File, path: String): Array<String>? {
         if (unipack.exists()) {
             try {
                 val arrayInfo = getTextFile(unipack)
 
-                val info: Array<String> = Array(4) { i: Int ->  ""}
+                val info: Array<String> = Array(4) { i ->  ""}
                 if (arrayInfo != null) {
                     for (`in` in arrayInfo) {
-                        if (`in`.startsWith(FileKey().KEY_INFO_TITLE)) {
-                            info[0] = `in`.replace(FileKey().KEY_INFO_TITLE, "")
-                        } else if (`in`.startsWith(FileKey().KEY_INFO_PRODUCER)) {
-                            info[1] = `in`.replace(FileKey().KEY_INFO_PRODUCER, "")
-                        } else if (`in`.startsWith(FileKey().KEY_INFO_CHAIN)) {
-                            info[2] = `in`.replace(FileKey().KEY_INFO_CHAIN, "")
+                        when {
+                            `in`.startsWith(FileKey.KEY_INFO_TITLE) -> info[0] = `in`.replace(FileKey.KEY_INFO_TITLE, "")
+                            `in`.startsWith(FileKey.KEY_INFO_PRODUCER) -> info[1] = `in`.replace(FileKey.KEY_INFO_PRODUCER, "")
+                            `in`.startsWith(FileKey.KEY_INFO_CHAIN) -> info[2] = `in`.replace(FileKey.KEY_INFO_CHAIN, "")
                         }
                     }
                 }
@@ -88,9 +107,9 @@ class FileIO(private val context: Context) : ContextWrapper(context) {
     @Throws(Exception::class)
     fun isExists(file: File, i: Int) {
         if (!file.exists()) {
-            if (i == FileKey().KEY_FILE_INT) {
+            if (i == FileKey.KEY_FILE_INT) {
                 file.createNewFile()
-            } else if (i == FileKey().KEY_DIRECTORY_INT) {
+            } else if (i == FileKey.KEY_DIRECTORY_INT) {
                 file.mkdirs()
             }
         }
