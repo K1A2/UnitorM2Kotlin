@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="radiobutton_style" parent="toolbar_style">
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:textColorTertiary">#ffffff</item>
+        <item name="android:tint">#ffffff</item>
+        <item name="android:colorForeground">#FFFFFF</item>
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+</resources>

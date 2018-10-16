@@ -22,5 +22,12 @@
     <style name="toolbar_style" parent="edittext_darkback">
         <item name="android:textColorPrimary">#FFFFFFFF</item>
     </style>
+    
+    <style name="radiobutton_style" parent="toolbar_style">
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:textColorTertiary">#ffffff</item>
+        <item name="android:tint">#ffffff</item>
+        <item name="android:colorForeground">#FFFFFF</item>
+    </style>
 
 </resources>

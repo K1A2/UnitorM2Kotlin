@@ -13,10 +13,10 @@ import com.unitor.k1a2.unitorm.file.FileIO
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import com.unitor.k1a2.unitorm.listener.SaveListener
+import com.unitor.k1a2.unitorm.listener.OnSaveListener
 
 
-class InfoFragment: Fragment(), SaveListener {
+class InfoFragment: Fragment(), OnSaveListener {
 
     private var a:Int = 0
     private lateinit var edit_Title: EditText
